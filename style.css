@@ -2,29 +2,24 @@ body {
     background: #f5f6fa;
 }
 
-/* LAYOUT GLOBAL */
+/* Dashboard */
 .layout {
     display: flex;
 }
-
-/* SIDEBAR */
 .menu {
     width: 250px;
     height: 100vh;
     background: #fff;
     padding: 20px;
 }
-
 .menu h2 {
     margin-bottom: 20px;
 }
-
 .listmenu {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-
 .listmenu button {
     border: none;
     padding: 12px;
@@ -33,20 +28,15 @@ body {
     text-align: left;
     cursor: pointer;
 }
-
 .listmenu button:hover,
 .listmenu .active {
     background: #4e73df;
     color: white;
 }
-
-/* CONTENT */
 .content {
     flex: 1;
     padding: 20px;
 }
-
-/* HEADER */
 .header {
     display: flex;
     justify-content: space-between;
@@ -59,27 +49,21 @@ body {
     cursor: pointer;
     margin: 0 5px;
 }
-
-/* CARDS */
 .cards {
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
 }
-
 .card {
     flex: 1;
     background: #fff;
     padding: 20px;
     border-radius: 12px;
 }
-
-/* MAIN */
 .main {
     display: flex;
     gap: 20px;
 }
-
 .left {
     flex: 2;
     background: white;
@@ -94,21 +78,16 @@ body {
 .right {
     flex: 1;
 }
-/* RIGHT CARDS */
 .card-small {
     background: white;
     padding: 15px;
     border-radius: 12px;
     margin-bottom: 15px;
 }
-
-/* COLORS */
 .green { color: #2ecc71; }
 .red { color: #e74c3c; }
 .orange { color: #f6c23e; }
 .blue { color: #4e73df; }
-
-/* CHART */
 .chart {
     width: 150px;
     height: 150px;
@@ -124,7 +103,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 .circle {
     width: 90px;
     height: 90px;
@@ -134,21 +112,16 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-/* PROGRESS */
 .progress {
     background: #eee;
     height: 8px;
     border-radius: 5px;
     margin: 5px 0 15px;
 }
-
 .progress div {
     height: 100%;
     background: #4e73df;
 }
-
-/* FLOAT BUTTON */
 .fab {
     position: fixed;
     bottom: 30px;
@@ -163,3 +136,386 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+
+/* Budget
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  display: flex;
+  gap: 30px;
+}
+h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+.form-section, .table-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex: 1;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+label {
+  font-weight: bold;
+}
+input, select, button {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button {
+  background-color: #0078d7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #005fa3;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  background-color: #0078d7;
+  color: white;
+}
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.revenu {
+  color: green;
+  font-weight: bold;
+}
+.depense {
+  color: red;
+  font-weight: bold;
+}
+.summary {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1em;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.month-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.month-nav button {
+  background-color: #eee;
+  color: #333;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.month-nav button:hover {
+  background-color: #ddd;
+}
+#month {
+  font-weight: bold;
+  font-size: 1.1em;
+} */
+
+
+/* A venir
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.dashboard {
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.summary-boxes {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.box {
+  flex: 1;
+  background: #eef2f7;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.box h3 {
+  margin-bottom: 10px;
+  color: #0078d7;
+}
+
+.amount {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.positif {
+  color: green;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #0078d7;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.depense {
+  color: red;
+  font-weight: bold;
+}
+.revenu {
+  color: green;
+  font-weight: bold;
+} */
+
+    /* Objectifs */
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.dashboard {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.new-goal {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.summary-boxes {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.box {
+  flex: 1;
+  background: #eef2f7;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.box h3 {
+  margin-bottom: 10px;
+  color: #0078d7;
+}
+
+.amount {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.goal {
+  background: #f9fafc;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.goal h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.progress {
+  background: #ddd;
+  border-radius: 4px;
+  height: 12px;
+  margin: 8px 0;
+}
+
+.progress div {
+  background: #0078d7;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.goal.reached .progress div {
+  background: green;
+}
+
+.deposit, .archive {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.deposit:hover, .archive:hover, .new-goal:hover {
+  background-color: #005fa3;
+} */
+
+/* Historiques */
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.dashboard {
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+}
+
+.filters select, .filters input, .filters button {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filters button {
+  background-color: #0078d7;
+  color: white;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background-color: #005fa3;
+}
+
+.summary-boxes {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.box {
+  flex: 1;
+  background: #eef2f7;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.box h3 {
+  margin-bottom: 8px;
+  color: #0078d7;
+}
+
+.revenu {
+  color: green;
+  font-weight: bold;
+}
+
+.depense {
+  color: red;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #0078d7;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.depense {
+  color: red;
+  font-weight: bold;
+}
+.revenu {
+  color: green;
+  font-weight: bold;
+} */
+
+
+/* Parametres */
+

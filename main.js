@@ -1,29 +1,18 @@
+// Dashboard
 const dashboardBtn = document.getElementById('dashboard-btn');
-const budgetBtn = document.getElementById('budget-btn');
-const upcomingBtn = document.getElementById('upcoming-btn');
-const goalsBtn = document.getElementById('goals-btn');
-const historyBtn = document.getElementById('history-btn');
-const settingsBtn = document.getElementById('settings-btn');
-
-
 dashboardBtn.addEventListener('click', () => {
     console.log('Dashboard button clicked');
 });
-
 const months = [
     "Janvier", "Février", "Mars", "Avril",
     "Mai", "Juin", "Juillet", "Août",
     "Septembre", "Octobre", "Novembre", "Décembre"
 ];
-
 let currentMonth = 3; // Avril
 let year = 2026;
-
 const monthDisplay = document.getElementById("month");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
-
-// 👉 DONNÉES PAR MOIS
 const financeData = {
     "Mars 2026": {
         solde: "300 000 Ar",
@@ -41,8 +30,6 @@ const financeData = {
         depenses: "1 200 000 Ar",
     }
 };
-
-// 👉 update UI
 function updateUI() {
     const key = months[currentMonth] + " " + year;
 
@@ -52,11 +39,8 @@ function updateUI() {
         document.getElementById("solde").textContent = financeData[key].solde;
         document.getElementById("revenus").textContent = financeData[key].revenus;
         document.getElementById("depenses").textContent = financeData[key].depenses;
-        document.getElementById("total-depenses").textContent = financeData[key].totalDepenses;
-    }
 }
-
-// ◀ mois précédent
+}
 prevBtn.addEventListener("click", () => {
     currentMonth--;
     if (currentMonth < 0) {
@@ -65,8 +49,6 @@ prevBtn.addEventListener("click", () => {
     }
     updateUI();
 });
-
-// ▶ mois suivant
 nextBtn.addEventListener("click", () => {
     currentMonth++;
     if (currentMonth > 11) {
@@ -75,26 +57,50 @@ nextBtn.addEventListener("click", () => {
     }
     updateUI();
 });
-
-// init
 updateUI();
 
-budgetBtn.addEventListener('click', () => {
-    console.log('Budget button clicked');
-});
+// // Budget
+// const mois = [
+//   "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+//   "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+// ];
+// let currentMonth = 3; // Avril (index 3)
+// let currentYear = 2026;
+// const monthSpan = document.getElementById("month");
+// const prevBtn = document.getElementById("prev");
+// const nextBtn = document.getElementById("next");
+// function updateMonth() {
+//   monthSpan.textContent = `${mois[currentMonth]} ${currentYear}`;
+// }
+// prevBtn.addEventListener("click", () => {
+//   currentMonth--;
+//   if (currentMonth < 0) {
+//     currentMonth = 11;
+//     currentYear--;
+//   }
+//   updateMonth();
+// });
+// nextBtn.addEventListener("click", () => {
+//   currentMonth++;
+//   if (currentMonth > 11) {
+//     currentMonth = 0;
+//     currentYear++;
+//   }
+//   updateMonth();
+// });
+// updateMonth();
 
-upcomingBtn.addEventListener('click', () => {
-    console.log('Upcoming button clicked');
-});
 
-goalsBtn.addEventListener('click', () => {
-    console.log('Goals button clicked');
-});
+// // A venir
+// document.querySelectorAll("tbody tr").forEach(row => {
+//   row.addEventListener("click", () => {
+//     alert("Détails de la dépense : " + row.cells[1].textContent);
+//   });
+// });
 
-historyBtn.addEventListener('click', () => {
-    console.log('History button clicked');
-});
+// Objectifs
 
-settingsBtn.addEventListener('click', () => {
-    console.log('Settings button clicked');
-});
+
+
+// Historique
+
