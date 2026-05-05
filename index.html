@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+    <!-- SIDEBAR -->
+    <div class="menu">
+        <h2>Finance Manager</h2>
+
+        <div class="listmenu">
+            <button class="active" id="dashboard-btn">Tableau de bord</button>
+            <button id="budget-btn">Budget</button>
+            <button id="upcoming-btn">A venir</button>
+            <button id="goals-btn">Objectifs</button>
+            <button id="history-btn">Historiques</button>
+            <button id="settings-btn">Paramètres</button>
+        </div>
+    </div>
+    <!-- CONTENU -->
+    <div class="content">
+        <div class="header">
+            <div>
+                <h1>Bonjour</h1>
+                <p>Aperçu rapide de vos finances</p>
+            </div>
+            <div class="date">
+                <button id="prev">◀</button>
+                <span id="month">Avril 2026</span>
+                <button id="next">▶</button>
+</div>
+        </div>
+        <!-- CARDS -->
+        <div class="cards">
+            <div class="card">
+                <p id="solde">Solde actuel</p>
+                <h2>450 000 Ar</h2>
+                <span class="positive">+5.2 % vs mois dernier</span>
+            </div>
+            <div class="card">
+                <p id="revenus">Revenus</p>
+                <h2 class="green">1 500 000 Ar</h2>
+                <span>3 entrées ce mois</span>
+            </div>
+            <div class="card">
+                <p id="depenses">Dépenses</p>
+                <h2 class="red">1 050 000 Ar</h2>
+                <span>17 transactions</span>
+            </div>
+        </div>
+        <!-- MAIN -->
+        <div class="main">
+            <div class="left">
+                <h3>Répartition des dépenses</h3>
+                <div class="chart-section">
+                    <div class="chart">
+                        <div class="circle">
+                            <span>1 050 000 Ar</span>
+                        </div>
+                    </div>
+                <div class="legend">
+                    <p><span class="c-logement"></span> Logement 470 000 Ar</p>
+                    <p><span class="c-transport"></span> Transport 210 000 Ar</p>
+                    <p><span class="c-loisirs"></span> Loisirs 158 000 Ar</p>
+                    <p><span class="c-alimentation"></span> Alimentation 126 000 Ar</p>
+                    <p><span class="c-autre"></span> Autre 86 000 Ar</p>
+                </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="card-small">
+                    <h4>A venir cette semaine</h4>
+                    <p class="red">Loyer -600 000 Ar</p>
+                    <p class="orange">Netflix -32 000 Ar</p>
+                    <p class="blue">Crédit voiture -180 000 Ar</p>
+                </div>
+                <div class="card-small">
+                    <h4>Mes objectifs</h4>
+                    <p>Vacances été</p>
+                    <div class="progress"><div style="width:62%"></div></div>
+                    <p>Nouvel ordinateur</p>
+                    <div class="progress"><div style="width:28%"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fab">+</div>
+</body>
+<script src="main.js"></script>
+</html>

@@ -1,0 +1,5 @@
+Vous devez développer , une application web monopage en 
+(sans framework) permettant à l'utilisateur de gérer son budget 
+mensuel, planifier ses charges récurrentes à venir, suivre des 
+objectifs d'épargne, et consulter un historique filtrable de ses 
+transactions,le tout en Ariary avec persistance via localStorage. 
