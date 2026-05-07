@@ -1,470 +1,231 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceuil</title>
+    <title>Personal Finance Manager</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="layout">
-    <!-- Dashboard -->
-    <div class="menu">
-        <h2>Finance Manager</h2>
-        <div class="listmenu">
-            <button class="active" id="dashboard-btn">Tableau de bord</button>
-            <button id="budget-btn">Budget</button>
-            <button id="upcoming-btn">A venir</button>
-            <button id="goals-btn">Objectifs</button>
-            <button id="history-btn">Historiques</button>
-            <button id="settings-btn">Paramètres</button>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="logo">
+                <h2>💰 PFM</h2>
+                <p>Personal Finance Manager</p>
+            </div>
+            <nav>
+                <div class="nav-item active" data-view="dashboard">
+                    <span class="emoji">📊</span>
+                    <span>Tableau de bord</span>
+                </div>
+                <div class="nav-item" data-view="budget">
+                    <span class="emoji">💵</span>
+                    <span>Budget mensuel</span>
+                </div>
+                <div class="nav-item" data-view="upcoming">
+                    <span class="emoji">⏰</span>
+                    <span>Dépenses à venir</span>
+                </div>
+                <div class="nav-item" data-view="goals">
+                    <span class="emoji">🎯</span>
+                    <span>Objectifs</span>
+                </div>
+                <div class="nav-item" data-view="history">
+                    <span class="emoji">📜</span>
+                    <span>Historique</span>
+                </div>
+                <div class="nav-item" data-view="settings">
+                    <span class="emoji">⚙️</span>
+                    <span>Paramètres</span>
+                </div>
+            </nav>
         </div>
-    </div>
-    <div class="content">
-        <div class="header">
-            <div>
-                <h1>Bonjour</h1>
-                <p>Aperçu rapide de vos finances</p>
-            </div>
-            <div class="date">
-                <button id="prev">◀</button>
-                <span id="month">Avril 2026</span>
-                <button id="next">▶</button>
-            </div>
-        </div>
-        <div class="cards">
-            <div class="card">
-                <p id="solde">Solde actuel</p>
-                <h2>450 000 Ar</h2>
-                <span class="positive">+5.2 % vs mois dernier</span>
-            </div>
-            <div class="card">
-                <p id="revenus">Revenus</p>
-                <h2 class="green">1 500 000 Ar</h2>
-                <span>3 entrées ce mois</span>
-            </div>
-            <div class="card">
-                <p id="depenses">Dépenses</p>
-                <h2 class="red">1 050 000 Ar</h2>
-                <span>17 transactions</span>
-            </div>
-        </div>
-        <div class="main">
-            <div class="left">
-                <h3>Répartition des dépenses</h3>
-                <div class="chart-section">
-                    <div class="chart">
-                        <div class="circle">
-                            <span>1 050 000 Ar</span>
+        <div class="main-content">
+            <!-- Dashboard Affiche -->
+            <div id="dashboard" class="view active">
+                <div class="dashboard-header">
+                    <h1>Tableau de bord</h1>
+                    <p>Bonjour 👋 Aperçu rapide de vos finances</p>
+                </div>
+                <!-- Sélecteur de mois -->
+                <div class="card">
+                    <div class="card-title">
+                        <span>📅 Sélecteur de mois</span>
+                        <div class="month-selector">
+                            <button class="btn btn-outline" onclick="changeMonth(-1)">◂ Mois précédent</button>
+                            <span id="currentMonth" style="padding: 0 1rem; font-weight: bold;"></span>
+                            <button class="btn btn-outline" onclick="changeMonth(1)">Mois suivant ▸</button>
                         </div>
                     </div>
-                <div class="legend">
-                    <p><span class="c-logement"></span> Logement 470 000 Ar</p>
-                    <p><span class="c-transport"></span> Transport 210 000 Ar</p>
-                    <p><span class="c-loisirs"></span> Loisirs 158 000 Ar</p>
-                    <p><span class="c-alimentation"></span> Alimentation 126 000 Ar</p>
-                    <p><span class="c-autre"></span> Autre 86 000 Ar</p>
                 </div>
+                <!-- 3 KPI Cards -->
+                <div class="kpi-row" id="dashboardKpis"></div>
+                <!-- Deux collone -->
+                <div class="dashboard-two-columns"></div>
+                <!-- Répartition des dépenses -->
+                <div class="card">
+                    <div class="card-title">📊 Répartition des dépenses</div>
+                    <div id="expenseBreakdown"></div>
                 </div>
-            </div>
-            <div class="right">
-                <div class="card-small">
-                    <h4>A venir cette semaine</h4>
-                    <p class="red">Loyer -600 000 Ar</p>
-                    <p class="orange">Netflix -32 000 Ar</p>
-                    <p class="blue">Crédit voiture -180 000 Ar</p>
+                <!-- À venir cette semaine -->
+                <div class="card">
+                    <div class="card-title">⏰ À venir cette semaine</div>
+                    <div id="weeklyUpcoming"></div>
                 </div>
-                <div class="card-small">
-                    <h4>Mes objectifs</h4>
-                    <p>Vacances été</p>
-                    <div class="progress"><div style="width:62%"></div></div>
-                    <p>Nouvel ordinateur</p>
-                    <div class="progress"><div style="width:28%"></div></div>
+                <!-- Mes objectifs -->
+                <div class="card">
+                    <div class="card-title">🎯 Mes objectifs</div>
+                    <div id="dashboardGoals"></div>
                 </div>
             </div>
+
+            <!-- Budget Affichage -->
+            <div id="budget" class="view">
+                <div class="card">
+                    <div class="card-title">➕ Ajouter une transaction</div>
+                    <form id="transactionForm">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select id="transType">
+                                <option value="income">💰 Revenu</option>
+                                <option value="expense">💸 Dépense</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Libellé</label>
+                            <input type="text" id="transLabel" required placeholder="Ex: Salaire, Courses...">
+                        </div>
+                        <div class="form-group">
+                            <label>Montant (Ar)</label>
+                            <input type="number" id="transAmount" required min="0" step="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Catégorie</label>
+                            <select id="transCategory" onchange="updateSubCategories()"></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Sous-catégorie</label>
+                            <select id="transSubCategory"></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" id="transDate" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <div class="card-title">📋 Transactions du mois</div>
+                    <div style="overflow-x: auto;">
+                        <table class="transaction-table">
+                            <thead><tr><th>Date</th><th>Libellé</th><th>Catégorie</th><th>Montant</th><th>Actions</th></tr></thead>
+                            <tbody id="transactionsList"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A venir affichage -->
+            <div id="upcoming" class="view">
+                <div class="card">
+                    <div class="card-title">➕ Ajouter une charge récurrente</div>
+                    <form id="upcomingForm">
+                        <div class="form-group"><label>Libellé</label><input type="text" id="upLabel" required></div>
+                        <div class="form-group"><label>Montant (Ar)</label><input type="number" id="upAmount" required></div>
+                        <div class="form-group">
+                            <label>Fréquence</label>
+                            <select id="upFrequency">
+                                <option value="monthly">Mensuelle</option>
+                                <option value="yearly">Annuelle</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Prochaine échéance</label><input type="date" id="upNextDate" required></div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <div class="card-title">⏰ Toutes les charges à venir</div>
+                    <div id="upcomingList"></div>
+                </div>
+            </div>
+
+            <!-- Objectifs Affichage -->
+            <div id="goals" class="view">
+                <div class="card">
+                    <div class="card-title">🎯 Nouvel objectif d'épargne</div>
+                    <form id="goalForm">
+                        <div class="form-group"><label>Nom</label><input type="text" id="goalName" required></div>
+                        <div class="form-group"><label>Montant cible (Ar)</label><input type="number" id="goalTarget" required></div>
+                        <div class="form-group"><label>Date cible (optionnel)</label><input type="date" id="goalDeadline"></div>
+                        <button type="submit" class="btn btn-primary">Créer l'objectif</button>
+                    </form>
+                </div>
+                <div class="goals-grid" id="goalsList"></div>
+            </div>
+
+            <!-- Affichage historique -->
+            <div id="history" class="view">
+                <div class="card">
+                    <div class="card-title">🔍 Filtres avancés</div>
+                    <div class="filters-bar">
+                        <div class="filter-group">
+                            <label>Période</label>
+                            <select id="historyPeriod" onchange="toggleCustomDate()">
+                                <option value="month">Ce mois</option>
+                                <option value="3months">3 derniers mois</option>
+                                <option value="year">Cette année</option>
+                                <option value="custom">Personnalisé</option>
+                            </select>
+                        </div>
+                        <div class="filter-group" id="customDateRange" style="display: none;">
+                            <label>Du</label><input type="date" id="dateStart">
+                            <label>Au</label><input type="date" id="dateEnd">
+                        </div>
+                        <div class="filter-group">
+                            <label>Catégorie</label>
+                            <select id="historyCategory"><option value="">Toutes</option></select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Type</label>
+                            <select id="historyType"><option value="">Tous</option><option value="income">Revenus</option><option value="expense">Dépenses</option></select>
+                        </div>
+                        <button class="btn btn-primary" onclick="applyHistoryFilters()">Appliquer</button>
+                        <button class="btn btn-outline" onclick="exportToCSV()">📥 Exporter CSV</button>
+                    </div>
+                    <div id="historySummary" class="kpi-row" style="margin-bottom: 0;"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">📜 Historique des transactions</div>
+                    <div style="overflow-x: auto;">
+                        <table class="transaction-table">
+                            <thead><tr><th>Date</th><th>Libellé</th><th>Catégorie</th><th>Type</th><th>Montant</th></tr></thead>
+                            <tbody id="historyList"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings View -->
+            <div id="settings" class="view">
+                <div class="card">
+                    <div class="card-title">🏷️ Gestion des catégories</div>
+                    <div id="categoriesList" class="category-list"></div>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label>Nouvelle catégorie</label>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="newCategoryName" placeholder="Nom">
+                            <input type="color" id="newCategoryColor" value="#3b82f6">
+                            <button class="btn btn-primary" onclick="addCategory()">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">⚙️ Actions</div>
+                    <button class="btn btn-danger" onclick="resetAllData()">🔄 Réinitialiser toutes les données</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="fab">+</div>
-
-<!-- Budgets
-  <div class="container">
-    <section class="form-section">
-      <h2>Nouvelle transaction</h2>
-      <form>
-        <label for="type">Type :</label>
-        <select id="type" name="type">
-          <option value="depense">Dépense</option>
-          <option value="revenu">Revenu</option>
-        </select>
-        <label for="libelle">Libellé :</label>
-        <input type="text" id="libelle" name="libelle" placeholder="Ex: Loyer">
-        <label for="montant">Montant :</label>
-        <input type="number" id="montant" name="montant" placeholder="Ex: 600000">
-        <label for="categorie">Catégorie :</label>
-        <select id="categorie" name="categorie">
-          <option>Logement</option>
-          <option>Alimentation</option>
-          <option>Transport</option>
-          <option>Loisirs</option>
-          <option>Santé</option>
-          <option>Revenu</option>
-        </select>
-        <label for="date">Date :</label>
-        <input type="date" id="date" name="date">
-        <button type="submit">Ajouter</button>
-      </form>
-    </section>
-    <section class="table-section">
-      <div class="header">
-        <h2>Budget mensuel</h2>
-        <div class="month-nav">
-          <button id="prev">◀</button>
-          <span id="month">Avril 2026</span>
-          <button id="next">▶</button>
-        </div>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Libellé</th>
-            <th>Catégorie</th>
-            <th>Montant</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>02/04</td>
-            <td>Salaire</td>
-            <td>Revenu</td>
-            <td class="revenu">+1 500 000 Ar</td>
-          </tr>
-          <tr>
-            <td>01/04</td>
-            <td>Loyer</td>
-            <td>Logement</td>
-            <td class="depense">−600 000 Ar</td>
-          </tr>
-          <tr>
-            <td>05/04</td>
-            <td>Courses</td>
-            <td>Alimentation</td>
-            <td class="depense">−80 000 Ar</td>
-          </tr>
-          <tr>
-            <td>07/04</td>
-            <td>Essence</td>
-            <td>Transport</td>
-            <td class="depense">−35 000 Ar</td>
-          </tr>
-          <tr>
-            <td>08/04</td>
-            <td>Cinéma</td>
-            <td>Loisirs</td>
-            <td class="depense">−15 000 Ar</td>
-          </tr>
-          <tr>
-            <td>10/04</td>
-            <td>Netflix</td>
-            <td>Loisirs</td>
-            <td class="depense">−32 000 Ar</td>
-          </tr>
-          <tr>
-            <td>12/04</td>
-            <td>Pharmacie</td>
-            <td>Santé</td>
-            <td class="depense">−18 000 Ar</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="summary">
-        <p>17 entrées</p>
-        <p><strong>Solde net : +450 000 Ar</strong></p>
-      </div>
-    </section>
-  </div> -->
-
-  <!-- A venir
-   <div class="dashboard">
-    <h1>Dépenses à venir</h1>
-    <div class="summary-boxes">
-      <div class="box">
-        <h3>À PAYER CE MOIS</h3>
-        <p class="amount">957 000 Ar</p>
-        <p>5 paiements</p>
-      </div>
-      <div class="box">
-        <h3>PROCHAIN PAIEMENT</h3>
-        <p>Loyer</p>
-        <p>02 Mai (dans 3 jours)</p>
-      </div>
-      <div class="box">
-        <h3>SOLDE PROJETÉ FIN MAI</h3>
-        <p class="amount positif">+600 000 Ar</p>
-      </div>
-    </div>
-    <h2>Calendrier des prélèvements (30 prochains jours)</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Libellé</th>
-          <th>Montant</th>
-          <th>Détails</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>02 Mai</td>
-          <td>Loyer appartement</td>
-          <td class="depense">−600 000 Ar</td>
-          <td>Logement • Loyer • Prélèvement automatique</td>
-        </tr>
-        <tr>
-          <td>05 Mai</td>
-          <td>Netflix</td>
-          <td class="depense">−32 000 Ar</td>
-          <td>Loisirs • Streaming • Mensuel • Carte bancaire</td>
-        </tr>
-        <tr>
-          <td>07 Mai</td>
-          <td>Crédit voiture</td>
-          <td class="depense">−180 000 Ar</td>
-          <td>Dette • Prêt auto • Mensuel • 18/36 échéances restantes</td>
-        </tr>
-        <tr>
-          <td>15 Mai</td>
-          <td>Spotify</td>
-          <td class="depense">−25 000 Ar</td>
-          <td>Loisirs • Streaming • Mensuel • Carte bancaire</td>
-        </tr>
-        <tr>
-          <td>20 Mai</td>
-          <td>Internet Telma</td>
-          <td class="depense">−120 000 Ar</td>
-          <td>Logement • Internet • Mensuel • Prélèvement automatique</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
-
-<!-- Objectifs
- <div class="dashboard">
-    <h1>Mes objectifs d’épargne</h1>
-    <p>Définissez un montant cible et alimentez votre cagnotte</p>
-    <button class="new-goal">+ Nouvel objectif</button>
-    <div class="summary-boxes">
-      <div class="box">
-        <h3>TOTAL ÉPARGNE</h3>
-        <p class="amount">4 470 000 Ar</p>
-      </div>
-      <div class="box">
-        <h3>OBJECTIFS ACTIFS</h3>
-        <p>3 / 4</p>
-      </div>
-      <div class="box">
-        <h3>PROGRESSION GLOBALE</h3>
-        <p>38 %</p>
-      </div>
-    </div>
-    <div class="goal">
-      <h2>Vacances été 2026</h2>
-      <p>Échéance : 01 juillet</p>
-      <div class="progress"><div style="width:62%"></div></div>
-      <p>62 % complété</p>
-      <p>ÉPARGNÉ 1 550 000 Ar sur 2 500 000 Ar (objectif)</p>
-      <p>+ 200 000 Ar / mois</p>
-      <p>+ 100 000 Ar</p>
-    </div>
-    <div class="goal">
-      <h2>Nouvel ordinateur</h2>
-      <p>Échéance : 01 décembre</p>
-      <div class="progress"><div style="width:28%"></div></div>
-      <p>28 % complété</p>
-      <p>ÉPARGNÉ 1 120 000 Ar sur 4 000 000 Ar (objectif)</p>
-      <p>+ 160 000 Ar / mois</p>
-      <p>+ 100 000 Ar</p>
-    </div>
-    <div class="goal">
-      <h2>Fonds d’urgence</h2>
-      <p>Sans échéance</p>
-      <div class="progress"><div style="width:0%"></div></div>
-      <p>0 % complété</p>
-      <p>ÉPARGNÉ 0 Ar sur 5 000 000 Ar (objectif)</p>
-      <p>À démarrer</p>
-      <button class="deposit">+ Premier dépôt</button>
-    </div>
-    <div class="goal reached">
-      <h2>Téléphone neuf</h2>
-      <p>ATTEINT</p>
-      <div class="progress"><div style="width:100%"></div></div>
-      <p>100 % terminé</p>
-      <p>ÉPARGNÉ 1 800 000 Ar sur 1 800 000 Ar (objectif)</p>
-      <p><strong>Bravo, objectif atteint !</strong></p>
-      <button class="archive">Archiver</button>
-    </div>
-  </div> -->
-
-<!-- Historiques
-  <div class="dashboard">
-    <h1>Historique des transactions</h1>
-    <div class="filters">
-      <label>Période :
-        <select>
-          <option>Avril 2026</option>
-          <option>Mars 2026</option>
-          <option>Février 2026</option>
-        </select>
-      </label>
-      <label>Catégorie :
-        <select>
-          <option>Toutes</option>
-          <option>Alimentation</option>
-          <option>Transport</option>
-          <option>Loisirs</option>
-          <option>Santé</option>
-          <option>Logement</option>
-          <option>Revenu</option>
-        </select>
-      </label>
-      <label>Du :
-        <input type="date">
-      </label>
-      <label>Au :
-        <input type="date">
-      </label>
-      <button>Filtrer</button>
-    </div>
-    <div class="summary-boxes">
-      <div class="box">
-        <h3>Transactions</h3>
-        <p>42</p>
-      </div>
-      <div class="box">
-        <h3>Revenus</h3>
-        <p class="revenu">+1 500 000 Ar</p>
-      </div>
-      <div class="box">
-        <h3>Dépenses</h3>
-        <p class="depense">−1 050 000 Ar</p>
-      </div>
-      <div class="box">
-        <h3>Solde net</h3>
-        <p class="revenu">+450 000 Ar</p>
-      </div>
-      <div class="box">
-        <h3>Dépense moyenne</h3>
-        <p>75 000 Ar</p>
-      </div>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Libellé</th>
-          <th>Catégorie</th>
-          <th>Type</th>
-          <th>Montant</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>28/04/2026</td>
-          <td>Pharmacie centrale</td>
-          <td>Santé</td>
-          <td>Dépense</td>
-          <td class="depense">−18 000 Ar</td>
-        </tr>
-        <tr>
-          <td>22/04/2026</td>
-          <td>Restaurant Le Bistrot</td>
-          <td>Alimentation</td>
-          <td>Dépense</td>
-          <td class="depense">−23 000 Ar</td>
-        </tr>
-        <tr>
-          <td>18/04/2026</td>
-          <td>Remboursement Paul</td>
-          <td>Revenu</td>
-          <td>Revenu</td>
-          <td class="revenu">+25 000 Ar</td>
-        </tr>
-        <tr>
-          <td>12/04/2026</td>
-          <td>Taxi-brousse Tana-Antsirabe</td>
-          <td>Transport</td>
-          <td>Dépense</td>
-          <td class="depense">−55 000 Ar</td>
-        </tr>
-        <tr>
-          <td>10/04/2026</td>
-          <td>Abonnement Netflix</td>
-          <td>Loisirs</td>
-          <td>Dépense</td>
-          <td class="depense">−32 000 Ar</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
-
-<!-- parametres -->
- <!-- <div class="dashboard">
-    <h1>Paramètres</h1>
-
-     Onglets
-    <div class="tabs">
-      <button class="active">Catégories</button>
-      <button>Préférences</button>
-      <button>Données</button>
-    </div>
-
-    <div class="content">
-      <!-- Liste des catégories 
-      <aside class="categories">
-        <h2>Catégories</h2>
-        <ul>
-          <li><span class="dot logement"></span> Logement (3 sous-cat.)</li>
-          <li><span class="dot transport"></span> Transport (4 sous-cat.)</li>
-          <li><span class="dot alimentation"></span> Alimentation (2 sous-cat.)</li>
-          <li><span class="dot loisirs"></span> Loisirs (3 sous-cat.)</li>
-          <li><span class="dot sante"></span> Santé (2 sous-cat.)</li>
-          <li><span class="dot dette"></span> Dette (1 sous-cat.)</li>
-          <li><span class="dot autre"></span> Autre (0 sous-cat.)</li>
-        </ul>
-        <button class="new-category">+ Nouvelle</button>
-      </aside>
-         Panneau de modification -
-      <section class="edit-panel">
-        <h2>Modifier la catégorie</h2>
-        <p><strong>Logement</strong></p>
-
-        <h3>Couleur</h3>
-        <div class="colors">
-          <span class="color red"></span>
-          <span class="color blue"></span>
-          <span class="color green"></span>
-          <span class="color orange"></span>
-          <span class="color purple"></span>
-        </div>
-
-        <h3>Sous-catégories</h3>
-        <ul class="subcategories">
-          <li>Loyer <button>Modifier</button> <button class="delete">x</button></li>
-          <li>Charges (eau, électricité, gaz) <button>Modifier</button> <button class="delete">x</button></li>
-          <li>Internet <button>Modifier</button> <button class="delete">x</button></li>
-        </ul>
-
-        <div class="actions">
-          <button class="delete-btn">Supprimer</button>
-          <button class="save-btn">Enregistrer</button>
-        </div>
-      </section>
-    </div>
- </div> -->
-
-
 </body>
 <script src="main.js"></script>
 </html>
